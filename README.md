@@ -10,7 +10,7 @@ A simple Python script for **SOC analysts** and **incident responders** to effic
 
   - **Clone the repository:**
     ```bash
-    git clone https://github.com/ogrimagy/virustotal-ip-reputation.git
+    git clone [https://github.com/ogrimagy/virustotal-ip-reputation.git](https://github.com/Ogrimagy/virustotal-bulk-ip-checker.git)
     cd virustotal-ip-reputation
     ```
   - **Configure your API key:**
