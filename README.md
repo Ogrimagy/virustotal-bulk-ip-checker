@@ -30,7 +30,7 @@ A simple Python script for **SOC analysts** and **incident responders** to effic
     ```
     185.220.101.23
     104.244.42.1
-    8.8.8.8
+    185.125.204.174
     ```
 
 -----
@@ -45,7 +45,7 @@ A simple Python script for **SOC analysts** and **incident responders** to effic
     ```
     185.220.101.23 → {'harmless': 60, 'malicious': 12, 'suspicious': 2, 'undetected': 8}
     104.244.42.1   → {'harmless': 85, 'malicious': 0, 'suspicious': 0, 'undetected': 5}
-    8.8.8.8        → {'harmless': 90, 'malicious': 0, 'suspicious': 0, 'undetected': 0}
+    185.125.204.174        → {'harmless': 90, 'malicious': 1, 'suspicious': 1, 'undetected': 0}
     ```
 
 -----
