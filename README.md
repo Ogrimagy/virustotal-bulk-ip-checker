@@ -13,10 +13,6 @@ A simple Python script for **SOC analysts** and **incident responders** to effic
     git clone https://github.com/ogrimagy/virustotal-ip-reputation.git
     cd virustotal-ip-reputation
     ```
-  - **Install dependencies:**
-    ```bash
-    pip install -r requirements.txt
-    ```
   - **Configure your API key:**
       - Get your free **VirusTotal API key** by signing up on their website.
       - Open `vt_bulk_ip.py` and replace `API_KEY` with your personal key.
