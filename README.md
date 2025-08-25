@@ -1,89 +1,80 @@
-A **README file** for a GitHub repository serves as a project's introduction and guide, detailing its purpose, usage, and other essential information. Based on the provided example, here is a breakdown of how to create a similar README for a new project.
+# 🛡️ VirusTotal Bulk IP Checker
+
+A simple Python script for **SOC analysts** and **incident responders** to efficiently check a bulk list of IP addresses against the **VirusTotal API v3**. It's ideal for quickly identifying malicious indicators from logs or network captures.
 
 -----
 
-## 🛡️ (Your Project Title)
+## 🚀 Getting Started
 
-Briefly describe your project's purpose and target audience. For example: "This project helps network administrators and security professionals **(Your main goal)** using **(Your key tools/APIs)**. It is designed for workflows where you **(Describe a typical scenario)** and then **(Explain what the script does)**."
+### 1\. **Setup**
 
------
-
-## 🚀 Workflow Example
-
-This section should walk a user through the practical steps of using your project. Use numbered or bulleted lists for clarity.
-
-### 1\. (First Step Title)
-
-  - Explain the first action a user needs to take.
-  - Provide clear, concise instructions.
-
-### 2\. (Second Step Title)
-
-1.  List the steps in a clear, sequential order.
-2.  Mention any specific tools or operations required, such as "Extract IP addresses" or "Remove duplicates."
-3.  Include a small example of the expected output.
-
------
-
-### 3\. Save the (Input Data) in a file
-
-Instruct the user on how to format and save their input data. For example: "Save the output into a file called **`data.txt`**."
-
------
-
-### 4\. Run the script
-
-Show the command-line instruction to run the script.
-
-```bash
-python your_script_name.py
-```
-
-Include an example of the expected output to show the user what to expect.
-
------
-
-## ⚙️ Setup
-
-This section covers how to set up the project locally.
-
-1.  **Clone the repo**
-
+  - **Clone the repository:**
     ```bash
-    git clone https://github.com/your-username/your-repo-name.git
-    cd your-repo-name
+    git clone https://github.com/ogrimagy/virustotal-ip-reputation.git
+    cd virustotal-ip-reputation
     ```
-
-2.  **Install requirements**
-
+  - **Install dependencies:**
     ```bash
     pip install -r requirements.txt
     ```
-
-3.  **Get a (Service Name) API key**
-
-      - Provide instructions on where to get the necessary API key.
-      - Explain where the user needs to insert or configure this key in the project files.
+  - **Configure your API key:**
+      - Get your free **VirusTotal API key** by signing up on their website.
+      - Open `vt_bulk_ip.py` and replace `API_KEY` with your personal key.
 
 -----
 
-## 📂 Files
+### 2\. **Create the Input File**
 
-Provide a brief list and description of the main files in the repository.
-
-  - **your\_script\_name.py**: Main script that performs the core function.
-  - **input\_file\_name.txt**: Input file for the script.
-  - **requirements.txt**: Lists the Python dependencies.
-  - **README.md**: This documentation file.
+  - Create a file named **`ips.txt`** in the project directory.
+  - Add the IP addresses you want to check, with one IP per line. For example:
+    ```
+    185.220.101.23
+    104.244.42.1
+    8.8.8.8
+    ```
 
 -----
 
-## 📊 Use Case: (Your Project's Application)
+### 3\. **Run the Script**
 
-Describe a real-world scenario where the project would be useful. For example: "Use it to **detect** unusual activity, **analyze** data for patterns, and **respond** by taking action based on the results."
+  - Execute the script from your terminal:
+    ```bash
+    python vt_bulk_ip.py
+    ```
+  - The output will display the reputation of each IP, showing the number of vendors that flagged it as `malicious`, `suspicious`, `harmless`, or `undetected`.
+    ```
+    185.220.101.23 → {'harmless': 60, 'malicious': 12, 'suspicious': 2, 'undetected': 8}
+    104.244.42.1   → {'harmless': 85, 'malicious': 0, 'suspicious': 0, 'undetected': 5}
+    8.8.8.8        → {'harmless': 90, 'malicious': 0, 'suspicious': 0, 'undetected': 0}
+    ```
+
+-----
+
+## 🔄 Recommended Workflow
+
+This script works great in a **cybersecurity workflow** for threat hunting and incident response:
+
+1.  **Extract IPs:** Use tools like **Wireshark** (via `Statistics → Conversations → IPv4 → Copy → As CSV`) or log parsers to gather a list of IP addresses from network traffic.
+2.  **Clean & Deduplicate:** Paste the raw list into **CyberChef** and use the **"Extract IP addresses"** and **"Remove duplicates"** operations to prepare a clean list.
+3.  **Check Reputation:** Save the clean list to `ips.txt` and run this script to quickly identify malicious IPs for further investigation.
+
+-----
+
+## 📚 Technical Details
+
+  - **`vt_bulk_ip.py`**: The main Python script that handles the API requests.
+  - **`ips.txt`**: The input file for the IP addresses.
+  - **`requirements.txt`**: Lists dependencies, primarily the `requests` library.
+
+-----
+
+## ⚠️ Important Note
+
+  - Free VirusTotal API keys have rate limits (e.g., **4 requests/minute**). Be mindful of this when querying large lists of IPs to avoid hitting the API limit.
+  - This tool is open-source and provided for **educational purposes** and **professional use** in security operations and threat hunting.
 
 -----
 
 ## 📝 License
 
-State the project's license and any important usage notes. This could be as simple as: "This project is open-source. Feel free to use and modify it for your needs." Also, include any disclaimers or usage constraints, such as API rate limits.
+This project is licensed under the MIT License.
